@@ -9,32 +9,26 @@ import Footer from './/Components/Footer'
 import './App.css';
 function App() {
 
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
+  const [Motion, setMotion] = useState(false);
   useEffect(() => {
     if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-      setIsDesktop(false);
-    }
+      setMotion(true);
+    } 
   }, []);
 
   return (
     <div>
-    <section id="hero" className="jumbotron" >
+    <section id="hero" >
     <Container>
-      <LightSpeed left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
-        <h1 className="hero-title" >
+      <LightSpeed left={Motion}  duration={1000} delay={500} distance="30px">
+        <h1 >
           <span className="textmain"> {'Welcome'}</span>
           <br />
           { "Start Visualising your data"}
         </h1>
       </LightSpeed>
-      <LightSpeed left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
-        <p className="herobtn">
+      <LightSpeed left={Motion}  duration={1000} delay={1000} distance="30px">
+        <p >
           <span className="btn--hero">
           <Scroll to='User' smooth={true}>
           <Button variant="outlined" color='secondary'>New Graph</Button>
