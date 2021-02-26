@@ -3,7 +3,7 @@ import React, {  useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import LightSpeed from 'react-reveal/LightSpeed';
 import { Link as Scroll } from 'react-scroll'
-import Userinput from './Components/UserInput'
+import Charts from './Components/Charts'
 import Button from '@material-ui/core/Button';
 import Footer from './/Components/Footer'
 import './App.css';
@@ -44,7 +44,7 @@ function App() {
       </LightSpeed>
     </Container>
   </section>
-  <Userinput/>
+  <Charts/>
   <Footer/>
   </div>
   );

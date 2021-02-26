@@ -71,6 +71,7 @@ import {
               <br/>
               { "Please Enter Your List Of Integers"}
               <br/>
+            
             </h1>
             <form  >
                 <div className="Form-text"> 
@@ -108,6 +109,9 @@ import {
                 </div>
                 <br/>
                 <br/>
+              { "Please Keep It within The Range 0-150"}
+              <br/>
+                <br/>
                 <Scroll to='Charts' smooth={true}>
                 <IconButton >
                     <ExpandMoreIcon color='secondary' style={{ fontSize:'2rem'}}/>
@@ -122,16 +126,18 @@ import {
       <Button onClick={()=>setShow(false)} color="secondary">Line</Button>
      </div>
       <div id="Charts" >
-        <p className="BarTitle">{Title}</p>
+        <p className="BarTitle">{Title}</p> 
+        {/* Toogle Bar and Line*/}
         {
         show? 
+        
       <BarChart className="Charts"
           width={900}
           height={500}
           dataKey="name" 
           data={data}
           margin={{
-            top: 5,
+            top: 0,
             right:100,
             left: 100,
             bottom: 5,
@@ -143,13 +149,13 @@ import {
             scale="point"
             padding={{ left: 100, right: 100 }}
           />
-          <YAxis domain={[0, 300]} />
+          <YAxis domain={[0, 150]} />
           <Tooltip />
           <Legend />
           <Bar dataKey={'Integers'} fill=" rgba(8, 114, 244, 0.6)" background={{ fill: "#eee" }} />
         </BarChart>:
          <div>
-
+            {/*Line chart */}
         <LineChart className="Charts"
 		width={900}
 		height={500}
@@ -160,7 +166,7 @@ import {
 	>
 		<CartesianGrid strokeDasharray="3 3" />
 		<XAxis dataKey="name" />
-		<YAxis domain={[0, 300]} />
+		<YAxis domain={[0, 150]} />
 		<Tooltip />
 		<Legend />
 		<Line type="monotone" dataKey="Integers" stroke="#8884d8"  />
