@@ -113,7 +113,6 @@ BarTitle:{
                 </div>
                 <br/>
                 <br/>
-              { "Please Keep It within The Range 0-100"}
               <br/>
                 <br/>
                 <Scroll to='Charts' smooth={true}>
