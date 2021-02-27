@@ -3,10 +3,23 @@ import React, {  useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import LightSpeed from 'react-reveal/LightSpeed';
 import { Link as Scroll } from 'react-scroll'
-import Charts from './Components/Charts'
 import Button from '@material-ui/core/Button';
 import Footer from './/Components/Footer'
-import './App.css';
+import UserInput from './Components/UserInput'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root:{
+    color: '$white-color',
+    fontSize: '3rem',
+    margin: '0 auto',
+   width: '100vh',
+   justifyContent: 'center',
+   alignItems: 'center',
+   textAlign:'center',
+      
+  },
+}));
 function App() {
 
   const [Motion, setMotion] = useState(false);
@@ -15,10 +28,10 @@ function App() {
       setMotion(true);
     } 
   }, []);
-
+  const classes = useStyles();
   return (
     <div>
-    <section id="hero" >
+    <section className={classes.root} >
     <Container>
       <LightSpeed left={Motion}  duration={1000} delay={500} distance="30px">
         <h1 >
@@ -38,7 +51,7 @@ function App() {
       </LightSpeed>
     </Container>
   </section>
-  <Charts/>
+  <UserInput/>
   <Footer/>
   </div>
   );

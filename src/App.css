@@ -35,13 +35,4 @@
     transform: rotate(360deg);
   }
 }
-#hero {
-    color: $white-color;
-    font-size: 3rem;
-    margin: 0 auto;
-   width: 100vh;
-   justify-content: center;
-   align-items: center;
-   text-align:center;
-  
-}
+

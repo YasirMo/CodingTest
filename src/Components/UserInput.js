@@ -1,22 +1,43 @@
 import React ,{useState}from 'react';
 import { Container } from 'react-bootstrap';
-import '../Styles/UserInput.css'
 import { Link as Scroll } from 'react-scroll'
 import { IconButton} from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
+import BarCharts from './BarCharts'
+import LineCharts from './LineCharts'
+import { makeStyles } from '@material-ui/core/styles';
 
-import {
-    Tooltip,
-    BarChart,
-    XAxis,
-    YAxis,
-    Legend,
-    CartesianGrid,
-    Bar,
-    LineChart,
-     Line 
-  } from "recharts";
+const useStyles = makeStyles((theme) => ({
+  root:{
+    minHeight: '100vh',
+    marginTop: '700px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+      
+  optionsTitle:{
+    fontSize: '40px',
+},
+FromText:{
+  fontSize: '30px',
+},
+ValueText:{
+  fontSize: '20px',
+},
+ChartBtns:{
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+},
+BarTitle:{
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+}
+}));
  function UserInput() {
     
   const [Title,setTitle] = useState(null);
@@ -40,32 +61,15 @@ import {
         function getNumber4(val){
             setNumber4(val.target.value)
         }
-        const data = [
-            { name: "Value 1", Integers: Number1},
-            { name: "Value 2", Integers: Number2},
-            { name: "Value 3", Integers: Number3},
-            { name: "Value 4", Integers: Number4},
-          ];
-          const dataLine = [
-            {
-              name: 'Value 1',  Integers: Number1, amt: 2400,
-            },
-            {
-              name: 'Value 2', Integers: Number2, amt: 2210,
-            },
-            {
-              name: 'Value 3', Integers: Number3, amt: 2290,
-            },
-            {
-              name: 'Value 4',  Integers: Number4, amt: 2000,
-            },
-          ];
+     
           const [show,setShow] = useState(true)
+          const classes = useStyles();
     return (
         <div >
-        <section id="User" className="UserInput" >
+        <section id="User" className={classes.root} >
         <Container>
-            <h1 className="options-title" >
+             {/* UserInput Title*/}
+            <h1 className={classes.optionsTitle} >
               <br />
               { "Enter Your Title 😃"}
               <br/>
@@ -74,14 +78,14 @@ import {
             
             </h1>
             <form  >
-                <div className="Form-text"> 
+                <div className={classes.FromText}> 
                 <labal>Title </labal>
                 <input type ='text' 
                 onChange={getTitle}/>
                 </div>
                 <br/>
                         {/* Value 1 */}
-                <div className="Value-Text">
+                <div className={classes.ValueText}>
                 <labal>Value 1 </labal>
                 <input type ='text' 
                 onChange={getNumber1}
@@ -95,7 +99,7 @@ import {
                <br/>
                 </div  >
                         {/* Value 3 */}
-                <div className="Value-Text">
+                <div className={classes.ValueText}>
                 <labal>Value 3 </labal>
                 <input type ='text' 
                  onChange={getNumber3}
@@ -109,7 +113,7 @@ import {
                 </div>
                 <br/>
                 <br/>
-              { "Please Keep It within The Range 0-150"}
+              { "Please Keep It within The Range 0-100"}
               <br/>
                 <br/>
                 <Scroll to='Charts' smooth={true}>
@@ -120,58 +124,20 @@ import {
             </form>
         </Container>
       </section>
-      <div className='ChartsBody'>
-      <div className="Chart-btns"> 
+      <div >
+      <div className={classes.ChartBtns}> 
       <Button onClick={()=>setShow(true)} color="secondary">Bar</Button>
       <Button onClick={()=>setShow(false)} color="secondary">Line</Button>
      </div>
       <div id="Charts" >
-        <p className="BarTitle">{Title}</p> 
+        <p className={classes.BarTitle}>{Title}</p> 
         {/* Toogle Bar and Line*/}
         {
         show? 
         
-      <BarChart className="Charts"
-          width={900}
-          height={500}
-          dataKey="name" 
-          data={data}
-          margin={{
-            top: 0,
-            right:100,
-            left: 100,
-            bottom: 5,
-          }}
-          barSize={20}
-        >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 100, right: 100 }}
-          />
-          <YAxis domain={[0, 150]} />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey={'Integers'} fill=" rgba(8, 114, 244, 0.6)" background={{ fill: "#eee" }} />
-        </BarChart>:
-         <div>
-            {/*Line chart */}
-        <LineChart className="Charts"
-		width={900}
-		height={500}
-		data={dataLine}
-		margin={{
-			top: 5, right: 30, left: 20, bottom: 5,
-		}}
-	>
-		<CartesianGrid strokeDasharray="3 3" />
-		<XAxis dataKey="name" />
-		<YAxis domain={[0, 150]} />
-		<Tooltip />
-		<Legend />
-		<Line type="monotone" dataKey="Integers" stroke="#8884d8"  />
-	</LineChart>
-  </div>
+      <BarCharts Number1={Number1} Title={Title} Number2={Number2} Number3={Number3} Number4={Number4}/>:
+      <LineCharts Number1={Number1} Title={Title} Number2={Number2} Number3={Number3} Number4={Number4}/>
+      // calling the values to be used
       }
       </div>
       </div>
