@@ -46,7 +46,7 @@ import {
 	>
 		<CartesianGrid strokeDasharray="3 3" />
 		<XAxis dataKey="name" />
-		<YAxis domain={[0, 100]} />
+		<YAxis domain={[0, 200]} />
 		<Tooltip />
 		<Legend />
 		<Line type="monotone" dataKey="Integers" stroke="#8884d8"  />

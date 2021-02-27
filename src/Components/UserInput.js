@@ -110,6 +110,7 @@ BarTitle:{
                 <input type ='text' 
                  onChange={getNumber4}
                />
+               <p>Please Keep The Range Between 0-200</p>
                 </div>
                 <br/>
                 <br/>

@@ -48,7 +48,7 @@ import {
             scale="point"
             padding={{ left: 100, right: 100 }}
           />
-          <YAxis domain={[0, 100]} />
+          <YAxis domain={[0, 200]} />
           <Tooltip />
           <Legend />
           <Bar dataKey={'Integers'} fill=" rgba(8, 114, 244, 0.6)" background={{ fill: "#eee" }} />
